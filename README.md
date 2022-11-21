@@ -81,18 +81,19 @@ python3.7 train2.py
 
 1. Google TTS API 사용하기
    1. API 키 설정
-   2. `export GOOGLE_APPLICATION_CREDENTIALS="api.json"`
-2. 음성(영상) - 텍스트 데이터 다운로드
-   1. `python3.7 -m datasets.son.download` - example for origin repo
-3. 음성을 정적을 기준으로 분리합니다.
+2. 음성을 정적을 기준으로 분리합니다.
    1. `python3.7 -m audio.silence --audio_pattern "./datasets/son/audio/*.wav" --method=pydub`
-4. 작게 분리된 음성들을 Google Speech Recognition API를 사용해 대략적인 문장들을 예측합니다. (moon과 park 데이터셋은 recognition.json이 이미 있기 때문에 이 과정은 생략하셔도 됩니다.)
-   1. `python3.7 -m recognition.google --audio_pattern "./datasets/son/audio/*.*.wav"`
-5. 기존의 텍스트와 음성 인식으로 예측된 텍스트를 비교해 `음성<->텍스트` 쌍 정보를 `./datasets/son/alignment.json`에 저장합니다.
-   1. `python3.7 -m recognition.alignment --recognition_path "./datasets/son/recognition.json" --score_threshold=0.5`
-6. 마지막으로 학습에 사용될 numpy 파일들을 만듭니다.
-   1. `python3.7 -m datasets.generate_data ./datasets/son/alignment.json`
+3. 작게 분리된 음성들을 Google Speech Recognition API를 사용해 대략적인 문장들을 예측하고, `음성<->텍스트` 쌍 정보를 `./script.json`에 저장합니다.
+   1. `python3 speech-recog.py`
+   2. Google Storage Bucket에 업로드한 wav 파일들을 Text-To-Speech API 사용해서 변환
+   3. `Too many open files error`
+      1. Adding the "ulimit -n 10240" statement to your bash profile using sudo nano .bash_profile makes it permanent.
+4. asdf
 
+
+
+<!-- 4. 마지막으로 학습에 사용될 numpy 파일들을 만듭니다.
+   1. `python3.7 -m datasets.generate_data ./datasets/son/alignment.json` -->
 
 ### 구글 TTS, MS Azure TTS, ETC
 
@@ -102,6 +103,7 @@ python3.7 train2.py
 * Google
   * Google Text to Speech
   * Google Storage
+
 
 ### Tacotron
 
@@ -119,3 +121,7 @@ python3.7 train2.py
   * <https://blog.crux.cx/iu-siri-3/>
   * <https://blog.crux.cx/iu-siri-4/>
   * <https://blog.crux.cx/iu-siri-5/>
+
+## 예제 음성들
+
+1. 저는 사실 사람이 아니라 강아집니다 - 민정씨
