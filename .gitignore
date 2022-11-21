@@ -1,5 +1,10 @@
 .output/*
 .taeyong-wav/*
 .kss/*
-.Tacotron-Korean-Tensorflow2
+.Tacotron-Korean-Tensorflow2/*
 .DS_Store
+.data/*
+.datasets/*
+.kss/*
+.output/*
+.util/*
