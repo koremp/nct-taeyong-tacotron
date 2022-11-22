@@ -10,20 +10,9 @@ with [chldkato/Tacotron-Korean-Tensorflow2](https://github.com/chldkato/Tacotron
 
 [chldkato/Tacotron-Korean-Tensorflow2](https://github.com/chldkato/Tacotron-Korean-Tensorflow2)
 
-* 해당 레포지토리 클론
-* Python 3.7
-  * M1에 Homebrew에는 깔리지 않는다.
-  * 문제 해결 - [참고 링크](https://diewland.medium.com/how-to-install-python-3-7-on-macbook-m1-87c5b0fcb3b5)
-    * Problem is python 3.7 from homebrew only work on x86.
-  * `ibrew`를 통해 해결 가능
-    * `arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
-    * `.zshrc`, `.bashrc`, etc =>  `alias ibrew="arch -x86_64 /usr/local/bin/brew"`
-    * `$ ibrew install python@3.7`
-  * Python 3.7에 맞게 해당 라이브러리 설치
-    * `python3.7 -m pip install library_name`
-      * pandas, numpy, librosa, tqdm, jamo
+해당 레포지토리 클론
 
-### 데이터 수집 및 전처리
+### 학습할 인물의 음성 데이터 수집 및 전처리
 
 #### 데이터 수집
 
@@ -42,24 +31,44 @@ with [chldkato/Tacotron-Korean-Tensorflow2](https://github.com/chldkato/Tacotron
          1. <https://computingforgeeks.com/how-to-install-gcloud-gcp-cli-on-apple-m1-macos/>
       2. `gcloud cp --recursive dir gs://my-bucket`
 
-#### KSS Kaggle Download
+### 인물 음성 데이터 만들기
+
+<https://github.com/carpedm20/multi-Speaker-tacotron-tensorflow>
+
+1. Install prerequisites
+
+    ```bash
+    pip3 install -r requirements.txt
+    python -c "import nltk; nltk.download('punkt')"
+    ```
+
+   1. API 키 설정
+2. 음성을 정적을 기준으로 분리합니다.
+
+#### Google Speech Recognition API
+
+Google Storage Bucket에 업로드한 wav 파일들을 Text-To-Speech API 사용해서 변환
+
+작게 분리된 음성들을 Google Speech Recognition API를 사용해 대략적인 문장들을 예측하고, `음성<->텍스트` 쌍 정보를 `./output/script.json`에 저장합니다.
+
+`$python3 speech-recog.py`
+
+#### KSS Kaggle File Download
 
 <https://www.kaggle.com/datasets/bryanpark/korean-single-speaker-speech-dataset>
 
-#### 데이터 전처리
+### 학습 데이터 준비
 
-#### 학습 데이터 준비
-
-KSS 데이터셋을 아래와 같은 형태로 압축 해제
+데이터셋을 아래와 같은 형태로 압축 해제
 
 ```text
-Tacotron-Korean-Tensorflow2
-  |- kss
-      |- 1
-      |- 2
-      |- 3
-      |- 4
-      |- transcript.v.1.x.txt
+datasets
+|- kss
+  |- 1
+  |- 2
+  |- 3
+  |- 4
+  |- transcript.v.1.x.txt
 ```
 
 위에서 클론한 레포지토리의 `preprocess.py`를 실행
@@ -75,35 +84,15 @@ python3.7 train1.py
 python3.7 train2.py
 ```
 
-### 인물 음성 데이터 만들기
-
-<https://github.com/carpedm20/multi-Speaker-tacotron-tensorflow>
-
-1. Google TTS API 사용하기
-   1. API 키 설정
-2. 음성을 정적을 기준으로 분리합니다.
-   1. `python3.7 -m audio.silence --audio_pattern "./datasets/son/audio/*.wav" --method=pydub`
-3. 작게 분리된 음성들을 Google Speech Recognition API를 사용해 대략적인 문장들을 예측하고, `음성<->텍스트` 쌍 정보를 `./script.json`에 저장합니다.
-   1. `python3 speech-recog.py`
-   2. Google Storage Bucket에 업로드한 wav 파일들을 Text-To-Speech API 사용해서 변환
-   3. `Too many open files error`
-      1. Adding the "ulimit -n 10240" statement to your bash profile using sudo nano .bash_profile makes it permanent.
-4. asdf
-
-
-
-<!-- 4. 마지막으로 학습에 사용될 numpy 파일들을 만듭니다.
-   1. `python3.7 -m datasets.generate_data ./datasets/son/alignment.json` -->
-
 ### 구글 TTS, MS Azure TTS, ETC
 
 * Azure
   * <https://learn.microsoft.com/ko-kr/azure/cognitive-services/speech-service/language-support?tabs=stt-tts#prebuilt-neural-voices>
   * <https://learn.microsoft.com/ko-kr/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=macos%2Cterminal&pivots=programming-language-python>
+  * Google Text-To-Speech 같은 서비스가 없었던 것 같다.
 * Google
   * Google Text to Speech
   * Google Storage
-
 
 ### Tacotron
 
@@ -121,6 +110,87 @@ python3.7 train2.py
   * <https://blog.crux.cx/iu-siri-3/>
   * <https://blog.crux.cx/iu-siri-4/>
   * <https://blog.crux.cx/iu-siri-5/>
+
+## Errors
+
+### Python3.7 install on M1 Chip
+
+M1에 Homebrew에는 깔리지 않는다.
+
+문제 해결 - [참고 링크 - macbook m1에 python3.7을 설치하는 방법(영문)](https://diewland.medium.com/how-to-install-python-3-7-on-macbook-m1-87c5b0fcb3b5)
+
+  > Problem is python 3.7 from homebrew only work on x86.
+
+해결 방법은 다음과 같다.
+
+1. brew x86 version을 설치
+
+    ```bash
+    $arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    ```
+
+2. rc 파일에 `ibrew` alias를 추가한다.
+
+    `alias ibrew="arch -x86_64 /usr/local/bin/brew"`
+``
+3. `$ibrew install python@3.7` 를 통해 python3.7을 설치
+   1. Python 3.7에 맞게 스크립트에서 사용하는 라이브러리 설치
+   2. `$python3.7 -m pip install ${library_name}`
+      1. `pandas`, `numpy`, `librosa`, `tqdm`, `jamo` 등
+
+### Too many open files error
+
+Adding the `ulimit -n 10240` statement to your shell profile using sudo rc file makes it permanent.
+
+### Python 3.6 install on M1 Mac
+
+<https://okke-formsma.github.io/>
+
+1. Set up ‘ibrew’, or a x86 brew
+
+    ```sh
+    arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "alias ibrew=\"arch -x86_64 /usr/local/bin/brew\"" >> ~/.zshrc
+    ```
+
+2. Install anaconda x86-64
+
+    ```sh
+    ibrew install anaconda
+    /usr/local/anaconda3/bin/conda init zsh
+    ```
+
+3. Create python 3.6 x86-64 venv
+
+    ```sh
+    conda create --name venv_py36 python=3.6
+    ibrew install libpq
+    export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
+    export LDFLAGS="-L/usr/local/opt/libpq/lib"
+    export CPPFLAGS="-I/usr/local/opt/libpq/include"
+    pip install psycopg2==2.8.6 --force-reinstall --no-cache-dir
+    ibrew install imagemagick freetype
+    pip install python-magic
+    ```
+
+### Install requirements.txt failed
+
+#### Install ipdb failed
+
+```sh
+pip3 install -r requirements.txt
+python -c "import nltk; nltk.download('punkt')"
+```
+
+requirements.txt의 ipdb를 설치할 수 없었다.
+
+conda로는 설치가 불가능하고, pipenv를 통해 설치할 수 있다.
+
+#### ImportError: cannot import name 'Feature', ERROR: No matching distribution found for MarkupSafe==1.0
+
+`MarkupSafe==1.0.0`으로 되어있는 `requirements.txt` 파일을 `MarkupSafe==1.1.1`로 바꿔줬다
+
+
 
 ## 예제 음성들
 
