@@ -1,6 +1,6 @@
 .DS_Store
-.Tacotron-Korean-Tensorflow2/**
-.multi-speaker-tacotron-tensorflow/**
+Tacotron-Korean-Tensorflow2/**
+multi-speaker-tacotron-tensorflow/**
 
 .data/**
 .data/**
@@ -16,3 +16,7 @@
 
 .taeyong-wav/*
 .kss/*
+
+data/
+
+taeyong/
