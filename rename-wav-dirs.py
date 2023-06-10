@@ -1,10 +1,11 @@
 import os
-import glob
 
-file_list = glob.glob('./multi-speaker-tacotron-tensorflow/datasets/taeyong/*/*.wav')
+count = 0
 
-print(len(file_list))
+dir = "/Users/claire/repos/github/koremp/nct-taeyong-taco-tts/taeyong/audio"
 
-for idx, file in enumerate(file_list):
-    print(idx)
-    os.rename(file, './multi-speaker-tacotron-tensorflow/datasets/taeyong/audio/{}.wav'.format(idx))
+for file in os.listdir(dir):
+    count += 1
+    file_oldname = os.path.join(dir, file)
+    file_newname_newfile = os.path.join(dir, str(count)+".wav")
+    os.rename(file_oldname, file_newname_newfile)

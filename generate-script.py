@@ -12,7 +12,7 @@ def transcribe_gcs(gcs_uri):
     audio = speech.RecognitionAudio(uri=gcs_uri)
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-        sample_rate_hertz=48000,
+        sample_rate_hertz = 44100,
         language_code='ko-KR',
         audio_channel_count=2,
         enable_separate_recognition_per_channel=False)
@@ -35,7 +35,9 @@ def transcribe_gcs(gcs_uri):
 #     transcribe_gcs("gs:///210213/"+str(cnt)+".wav")
 #     cnt+=1
 
-for i in range(54):
-    transcribe_gcs("gs://taeyong/output/{0}/{1}.wav".format(i, j))
-
-# 오류 발생시 https://cloud.google.com/speech-to-text/docs/error-messages 참조
+# for i in range(1, 13423):
+for i in range(1, 100):
+    try:
+        transcribe_gcs("gs://taeyong-audio-wav/{0}.wav".format(i))
+    except:
+        print("except - {0}".format(i))

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "stellar-horizon-369009",
+  "private_key_id": "1f9ffdd4a08d2965738872318021d0aec8f03139",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDHt+ifQvNiFNsX\np55iZj9HVzuW83eTd1NcYl9Z5ViSn66IE5tFISAUxgg1hZiq8kB7Bt7haIQ4WB3V\nLTl/zb8RUJwgbc09rTf4wxP8p5P2UetUlQrzQueDMsHIusT2IK1IE7gsukN+tbcf\nkzc6KkY63XWKiCpZyXrxB+rh+bPC8CGIebyXD7cNUEQoKw3RE04CGDTu+6qLC+P0\nhioYyGMdDvpLw15a+IOEeBtdCfsNebMfsh5fR3TqlnrWXj52tbxmSjUiM9kRoatE\nZrtw0lkRKJdu5bawmLnU5cdsDDwADZ45hv4RcfipbL7dapZb+NlgmrhK0Tz8cx9n\nvqRy6dRJAgMBAAECggEAGR/ZK0PcY0/VWg3znlRXjI18SRqaxdniikIz1ZbFBDkD\nV0oEI/etVf+to7IJSSQNmYx9OGUSERaAtkMosxu6eB6obWnywloKqwg7ePLJ6dhX\nXv4a8QxPHJGjkDFyurXUprcYWcQa3pNUlKvL7EzKJfibI1DK5x2yEiVZVpE3nIOp\nAgATPNaJ/p8NGAKfVuYLCEmNywcMenTRw/34swqp3HRetl5FNQ5ykSQV9irSszXV\ny4hgC+Cx4GlkOtBsK69UcDY3esRRHyCAp1Hc2zM51OVTLz+d4Y7cgMp4F6iGjy6/\nXgiZdJ3uCg2PJelrDNbZ7F6Ka6Qi2Wa/ILbzYtwamwKBgQDozTPbIAUvZ00paYTW\nBJu8ECgrhZG2y4OmN1Xc92PyjZFggyJ/mH5skChvPdhNyWGweK2DrrzVcxqQNswI\nFnLlfw4ixQ2OPd3b1jto4t9CAjGPzF4sQY3hg5hM4VP220kphcwm0Qd1PWFnD+DN\nbAG+zt6nIT4hM2g3canes71iRwKBgQDbnsADMGgzTxlUj04pd89mZru6lhXtjaew\nXqGJ0bg/1ntIQHxeCwnOLv4tAbfCWT0J3D/owm9WMtZlDRFZ6RpUYQr9W746cxVv\nRVooTsIbKz9gTHpPGvrSHkFzNbrDUBrmetB71KwyaRdmaczjJuXE6IH+H1trOmgm\nv2HibaJM7wKBgQCxFq+0p1Xqal1S/DaVCupgk7XK7Y8bixJ5FSzWqsW306Lb1MUg\nZKL++GYZwOTSvzb1o8byHbD9edKiE1z/Zfw+wXjCUD1wj3U97mhA8Bu+vaZv6ZlV\ndwRzoMPw75MMfGDaGjJi8K0IrQlz+asa+GcXe4v5fJsjbFSBoJAEnZuZrwKBgQDV\nnyYANB63AdKOuNH7bgmz/mvOQ1zS873PxUx1pSQGHFdQYUFXrH7+KiGcn5YhmfHQ\nXIdhnXb0roByTHK7NQ0iVD5/ULTJX9XSpO/cUzdle/yqa9lwhrrAlSNusC2Y+5se\n4wlV2fkhE63qNTFRJi3LCaogCFpBA8/5GKFawO9kywKBgQDYZa8Ew6ECmpse5aVr\n5kaQGYwUokky0iVnWM0c6pQtkOV8M0LtbOB7wf93inEdZ0OF1meCLtzQ5zDqx1KA\newnAhIYgp3vg+KYgM4DgnvNpPWsbMayYxlDwu2KOA6x2H6ihXxT6RsdW2a4cWnG0\nvDlj8HZ4Omrsb13F/uqbv3xjXA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "admin-672@stellar-horizon-369009.iam.gserviceaccount.com",
+  "client_id": "109272736617839979706",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/admin-672%40stellar-horizon-369009.iam.gserviceaccount.com"
+}
