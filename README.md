@@ -35,18 +35,6 @@ using pytorch instead of tf2
 
 ### 인물 음성 데이터 만들기
 
-<https://github.com/carpedm20/multi-Speaker-tacotron-tensorflow>
-
-1. Install prerequisites
-
-    ```bash
-    pip3 install -r requirements.txt
-    python -c "import nltk; nltk.download('punkt')"
-    ```
-
-   1. API 키 설정
-2. 음성을 정적을 기준으로 분리합니다.
-
 #### Google Speech Recognition API
 
 Google Storage Bucket에 업로드한 wav 파일들을 Text-To-Speech API 사용해서 변환
@@ -71,9 +59,16 @@ datasets
   |- 3
   |- 4
   |- transcript.v.1.x.txt
+|-taeyong
+ |-alignment.json
+  |-1.wav
+  |-2.wav
+  ...
+
 ```
 
-위에서 클론한 레포지토리의 `preprocess.py`를 실행
+
+PyTorch 클론한 레포지토리의 `preprocess.py`를 실행
 
 ```bash
 python3 preprocess.py
@@ -82,19 +77,15 @@ python3 preprocess.py
 ### Train
 
 ```sh
-python3.7 train1.py
-python3.7 train2.py
+python3 train1.py
+python3 train2.py
 ```
 
 ### 구글 TTS, MS Azure TTS, ETC
 
-* Azure
-  * <https://learn.microsoft.com/ko-kr/azure/cognitive-services/speech-service/language-support?tabs=stt-tts#prebuilt-neural-voices>
-  * <https://learn.microsoft.com/ko-kr/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=macos%2Cterminal&pivots=programming-language-python>
-  * Google Text-To-Speech 같은 서비스가 없었던 것 같다.
 * Google
   * Google Text to Speech
-  * Google Storage
+  * Google Storage, Bucket
 
 ### Tacotron
 
@@ -134,7 +125,7 @@ M1에 Homebrew에는 깔리지 않는다.
 2. rc 파일에 `ibrew` alias를 추가한다.
 
     `alias ibrew="arch -x86_64 /usr/local/bin/brew"`
-``
+
 3. `$ibrew install python@3.7` 를 통해 python3.7을 설치
    1. Python 3.7에 맞게 스크립트에서 사용하는 라이브러리 설치
    2. `$python3.7 -m pip install ${library_name}`
