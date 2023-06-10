@@ -4,6 +4,8 @@ NCT 태용 TTS with Tacotron2, Google Text-to-Speech, Google.
 
 with [chldkato/Tacotron-Korean-Tensorflow2](https://github.com/chldkato/Tacotron-Korean-Tensorflow2)
 
+using pytorch instead of tf2
+
 ## 순서
 
 ### 개발환경 설정

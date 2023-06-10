@@ -25,7 +25,7 @@ def transcribe_gcs(gcs_uri):
     # response = operation.result(timeout=90)
 
     # json 파일에 내용추가
-    with open("./script.json", "a") as script:
+    with open("./alignment.json", "a") as script:
         for result in response.results:
             print('"'+gcs_uri+'": "'+u'{}'.format(result.alternatives[0].transcript)+'",')
             script.write('"'+gcs_uri+'": "'+u'{}'.format(result.alternatives[0].transcript)+'",\n')
@@ -36,7 +36,7 @@ def transcribe_gcs(gcs_uri):
 #     cnt+=1
 
 # for i in range(1, 13423):
-for i in range(1, 100):
+for i in range(1, 13423):
     try:
         transcribe_gcs("gs://taeyong-audio-wav/{0}.wav".format(i))
     except:
