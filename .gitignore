@@ -20,3 +20,5 @@ multi-speaker-tacotron-tensorflow/**
 data/
 
 taeyong/
+
+google-admin-auth.json
