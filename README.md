@@ -67,29 +67,9 @@ datasets
 
 ```
 
+내 환경은 macbook m1 air 이여서, 이 프로그램의 환경 중 python3.7과 호환이 되지 않는다는 문제가 있다
 
-PyTorch 클론한 레포지토리의 `preprocess.py`를 실행
-
-```bash
-python3 preprocess.py
-```
-
-### Train
-
-```sh
-python3 train1.py
-python3 train2.py
-```
-
-### 구글 TTS, MS Azure TTS, ETC
-
-* Google
-  * Google Text to Speech
-  * Google Storage, Bucket
-
-### Tacotron
-
-<https://github.com/carpedm20/multi-Speaker-tacotron-tensorflow>
+그래서 Python 3.7을 사용할 수 있는 가상 환경에 kss 데이터셋(4GB)과 내 데이터셋 (4.34GB)을 업로드하여 직접 `preprocess.py`와 `train.py`를 실행할 수 있는 환경을 만드는 중이다.
 
 ## References
 
