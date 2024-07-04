@@ -2,6 +2,8 @@
 
 NCT 태용 TTS with Tacotron2, Google Text-to-Speech, Google.
 
+GPU에서 멈춰있나...? GPU로 학습할 수 있는 서비스를 이용해보자.
+
 with [chldkato/Tacotron-Korean-Tensorflow2](https://github.com/chldkato/Tacotron-Korean-Tensorflow2)
 
 using pytorch instead of tf2
