@@ -8,6 +8,8 @@ with [chldkato/Tacotron-Korean-Tensorflow2](https://github.com/chldkato/Tacotron
 
 using pytorch instead of tf2
 
+## 사용 라이브 플레이리스트
+
 ## 순서
 
 ### 개발환경 설정
@@ -24,6 +26,8 @@ using pytorch instead of tf2
 
 * [V Live](https://youtube.com/playlist?list=PLPwEopeBCewQlMIZGGUKyT3yip2GDFJoL)
 * [Instagram Live](https://youtube.com/playlist?list=PLA8UnQkZ80qiovpOZlo6N7_J3OYr6CP9H)
+* https://www.youtube.com/watch?v=RkMfgTW9kAo&list=PLzsTJ0_iTSqvHblwr6EJX7TTlWlsSOhfB
+* https://www.youtube.com/watch?v=2O_MWxgPsFQ&list=PLhomFjB5GA67PTRX35kdghARK919v2usw
 
 1. wav file로 다운로드
 2. `silent-divide.py` 의 path 설정을 잘 바꿔서 wav 파일의 무음을 기준으로 파일을 나누기
